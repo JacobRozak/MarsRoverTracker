@@ -1,6 +1,3 @@
-const Rover = require('./src/rover')
-const Grid = require('./src/grid')
-const Position = require('./src/position')
 const Controller = require('./src/controller')
 const fs = require('fs')
 const controller = new Controller();

@@ -46,7 +46,7 @@ module.exports = class Controller {
     
     setGridFromInstruction (gridInstruction) {
       if (!this.validateGridInstruction(gridInstruction)) {
-        throw Error(`Grid instructions is not correct: "${gridInstruction}"`);
+        throw Error(`Grid instructions is just wrong, look at this crap: "${gridInstruction}"`);
       }
       const args = gridInstruction.split(' ').map(i => parseInt(i));
       this.grid = new Grid(...args);

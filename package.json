@@ -1,0 +1,25 @@
+{
+  "name": "marsrovertracker",
+  "version": "1.0.0",
+  "description": "`npm start`",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobRozak/MarsRoverTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JacobRozak/MarsRoverTracker/issues"
+  },
+  "homepage": "https://github.com/JacobRozak/MarsRoverTracker#readme",
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
+}

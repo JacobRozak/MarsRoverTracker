@@ -1,5 +1,4 @@
 module.exports = class Grid {
-    
     constructor(width, height, min_width=0, min_height=0){
         this.width = width
         this.height = height

@@ -1,8 +1,14 @@
 # MarsRowerTracker
+first:
+`npm i`
 
-`npm start`
+then:
+`node index.js`
+
+to run tests:
+`npm test`
 
 ```if time wasnt an issue:```
---->tons of tests(unit, integrated, back-to-back)
+--->more tests(integrated, back-to-back)
 --->more typechecking all around
 --->break down the classes even more
