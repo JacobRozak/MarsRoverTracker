@@ -5,8 +5,7 @@ module.exports = class Grid {
         this.height = height
         this.min_width = min_width
         this.min_height = min_height
-    }
-    checkIfMoveAvaliable(){
-        return this.min_width <= position.x <= this.width && this.min_height <= position.y <= this.height
+        this.offside = [];
+        this.lost = '';
     }
 }

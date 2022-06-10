@@ -13,7 +13,6 @@ module.exports = class Controller {
       instructionLines = instructionLines.filter(instructionLine => {
         return instructionLine.trim() !== '';
       });
-      
       //setup grid
       this.setGridFromInstruction(instructionLines[0]);
       //setup rover
@@ -30,7 +29,7 @@ module.exports = class Controller {
         this.setRoverFromInstruction(roverInstruction);
       });
       
-      return this.rover
+      return this.rover;
     }
     
     validateGridInstruction (instruction) {

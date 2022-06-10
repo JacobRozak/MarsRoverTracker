@@ -1,16 +1,15 @@
 const directions = require('./directions')
 module.exports = class Rover {
     constructor(grid, position, heading, input) {
-        this.gird = grid;
+        this.grid = grid;
         this.position = position;
         this.heading = heading;
         this.input = input;
     }
     run() {
         this.process(this.input);
-        return `${this.position.x} ${this.position.y} ${this.get_heading()}`;
+        return `${this.position.x} ${this.position.y} ${this.get_heading()} ${this.grid.lost}`;
     }
-    
     get_heading() {
         var directionsArr = Object.keys(directions);
         try {
@@ -22,7 +21,6 @@ module.exports = class Rover {
         
         return direction;
     }
-    
     process(commands) {
         commands.split('').forEach(command => {
             if (command == 'L') {
@@ -36,9 +34,37 @@ module.exports = class Rover {
             }
         });
     }
+    checkIfMoveAvaliable(){
+        if (this.grid.offside.length == 0) {
+            if (this.position.x > this.grid.width || this.position.y > this.grid.height) {
+                this.grid.offside.push(this.position)
+                this.grid.lost = 'LOST'
+                
+                return true
+            }
+        } else if(this.grid.offside.length > 0) {
+            this.grid.offside.forEach(e => {
+                if (this.position.x > e.x || this.position.y > e.y) {
+                    this.position.y -= 1;
+                }
+            })
+        }
+        if (this.position.x > this.grid.width) {
+            this.grid.offside.push(this.position);
+            this.position.x -= 1;
+            
+            return true
+        } else if (this.position.y > this.grid.height) {
+            this.grid.offside.push(this.position);
+            this.position.y -= 1;
+            
+            return true;
+        }
+        this.grid.lost = '';
+        return false;
+    }
     forward() {
-        //console.log(this.grid)
-        //if (!this.grid.checkIfMoveAvaliable(this.position)) return False;
+        this.checkIfMoveAvaliable(this.position)
         if (directions['N'] == this.heading) {
             this.position.y += 1;
         } else if(directions['E'] == this.heading) {
@@ -54,17 +80,17 @@ module.exports = class Rover {
     
     turnLeft() {
         if (this.heading !== 1){
-            this.heading -= 1
+            this.heading -= 1;
         } else {
-            this.heading = 4
+            this.heading = 4;
         }
     }
     
     turnRight() {
         if (this.heading !== 4){
-            this.heading += 1
+            this.heading += 1;
         } else {
-            this.heading = 1
+            this.heading = 1;
         }
     }
     
