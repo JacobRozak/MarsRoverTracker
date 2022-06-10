@@ -29,14 +29,15 @@ module.exports = class Rover {
                 this.turnLeft();
             } else if (command == 'R') {
                 this.turnRight();
-            } else if (command == 'M') {
-                this.move();
+            } else if (command == 'F') {
+                this.forward();
             } else {
-                console.log('Gimmie a break');
+                console.log('Gimmie a break, that command is obviously stupid');
             }
         });
     }
-    move() {
+    forward() {
+        //console.log(this.grid)
         //if (!this.grid.checkIfMoveAvaliable(this.position)) return False;
         if (directions['N'] == this.heading) {
             this.position.y += 1;
@@ -52,11 +53,19 @@ module.exports = class Rover {
     }
     
     turnLeft() {
-        (this.heading -= 1) ? (this.heading !== 1) : (this.heading = 4);
+        if (this.heading !== 1){
+            this.heading -= 1
+        } else {
+            this.heading = 4
+        }
     }
     
     turnRight() {
-        (this.heading += 1) ? (this.heading !== 4) : (this.heading = 1);
+        if (this.heading !== 4){
+            this.heading += 1
+        } else {
+            this.heading = 1
+        }
     }
     
 }

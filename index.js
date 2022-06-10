@@ -1,10 +1,17 @@
 const Rover = require('./src/rover')
 const Grid = require('./src/grid')
 const Position = require('./src/position')
-const directions = require('./src/directions')
+const Controller = require('./src/controller')
+const fs = require('fs')
+const controller = new Controller();
 
-var grid = new Grid(5, 5)
-var position = new Position(1, 2)
+fs.readFile('./parameters.txt', (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    const input = data.toString();
+    controller.init(input).forEach(rover => console.log(rover.run()));
+})
 
-var rover = new Rover(grid, position, directions['N'], "LMLMLMLMM")
-console.log(rover.run())
+
